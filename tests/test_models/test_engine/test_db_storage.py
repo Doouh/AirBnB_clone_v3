@@ -92,13 +92,13 @@ class TestFileStorage(unittest.TestCase):
         """Tests the get method"""
         st = State(name="Kevin")
         st.save()
-        state_test = storage.get(State, st.id)
+        state_test = DBStorage.get(State, st.id)
         self.assertTrue(st.id == state_test.id)
 
     def test_count(self):
         """ Tests the count method"""
-        count_pre = storage.count(State)
+        count_pre = DBStorage.count(State)
         new_state = State(name="Camilo")
         new_state.save()
-        count_post = storage.count(State)
+        count_post = DBStorage.count(State)
         self.assertTrue((count_pre + 1) == count_post)
